@@ -19,6 +19,7 @@ public class OrderItem {
     private Long itemId;
 
     private int orderPrice;
+
     private int count;
 
     public Long getId() {

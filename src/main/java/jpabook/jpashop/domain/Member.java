@@ -8,9 +8,13 @@ public class Member {
     @Id @GeneratedValue  // @GeneratedValue 기본 strategy값 : Auto
     @Column(name="MEMBER_ID")
     private Long id;
+
     private String name;
+
     private String city;
+
     private String street;
+
     private String zipcode;
 
     //가급적 생성자에서 세팅을 다하고 setter는 안 쓰는게 좋음.
