@@ -7,7 +7,7 @@ import java.util.List;
 
 @Entity
 @Table(name="ORDERS")   //디비마다 다른데 디비에는 ORDER BY 라고 예약어가 걸려있음.
-public class Order {
+public class Order extends BaseEntity{
 
     @Id @GeneratedValue
     @Column(name="ORDER_ID")
