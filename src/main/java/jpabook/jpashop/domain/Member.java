@@ -1,6 +1,8 @@
 package jpabook.jpashop.domain;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 public class Member {
@@ -16,6 +18,10 @@ public class Member {
     private String street;
 
     private String zipcode;
+
+    //필요시에만 이렇게 양방향 관계 설정해주면 됨. 양방향 관계가 필수는 아님.
+    @OneToMany(mappedBy = "member")
+    private List<Order> orders = new ArrayList<>();
 
     //가급적 생성자에서 세팅을 다하고 setter는 안 쓰는게 좋음.
     public Long getId() {
