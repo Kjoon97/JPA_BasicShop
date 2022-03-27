@@ -5,6 +5,8 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
+import static javax.persistence.FetchType.LAZY;
+
 @Entity
 @Table(name="ORDERS")   //디비마다 다른데 디비에는 ORDER BY 라고 예약어가 걸려있음.
 public class Order extends BaseEntity{
@@ -13,14 +15,14 @@ public class Order extends BaseEntity{
     @Column(name="ORDER_ID")
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = LAZY)
     @JoinColumn(name="MEMBER_ID")
     private Member member;
 
-    @OneToMany(mappedBy = "order")
+    @OneToMany(mappedBy = "order",cascade = CascadeType.ALL)  //Order만 persist하면 orderItems, delivery 모두 persist됨.
     private List<OrderItem> orderItems = new ArrayList<>();
 
-    @OneToOne
+    @OneToOne(fetch = LAZY ,cascade =CascadeType.ALL)
     @JoinColumn(name="DELIVERY_ID")
     private Delivery delivery;
 
